@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://37w7jrkrcneo"]
+
+[ext_resource type="Texture2D" uid="uid://bn5l43v7hr2f3" path="res://resource/background/background01.png" id="1_iskdf"]
+[ext_resource type="Script" path="res://scenes/lobby/lobby.gd" id="1_yfq68"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yfq68")
+
+[node name="BackGround" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = -638.0
+offset_top = -59.0
+offset_right = 562.0
+offset_bottom = 616.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_iskdf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(480, 700)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreateRoom" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create Room"
+
+[node name="JoinRoom" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Room"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CreateRoom" to="." method="_on_create_room_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/JoinRoom" to="." method="_on_join_room_pressed"]

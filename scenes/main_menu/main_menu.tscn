@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcixe21ujvi2u"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_cf42f"]
+[ext_resource type="Texture2D" uid="uid://cxw11tgwucgic" path="res://resource/background/background02.png" id="1_qetb5"]
+
+[sub_resource type="SystemFont" id="SystemFont_dhn44"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_q7efr"]
+font_names = PackedStringArray("Impact")
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cf42f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = -17.0
+offset_right = 1871.0
+offset_bottom = 1689.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_qetb5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.183597, 0.39634, 0.218785, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0.262745, 0.388235)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = SubResource("SystemFont_dhn44")
+theme_override_font_sizes/font_size = 64
+text = "CARO FIGHT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="fightAI" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_q7efr")
+theme_override_font_sizes/font_size = 24
+text = "Fight AI"
+
+[node name="pvpoffline" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_q7efr")
+theme_override_font_sizes/font_size = 24
+text = "PvP Offline"
+
+[node name="pvponline" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_q7efr")
+theme_override_font_sizes/font_size = 24
+text = "PvP Online"
+
+[node name="Button4" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_q7efr")
+theme_override_font_sizes/font_size = 24
+text = "Rank"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/fightAI" to="." method="_on_fight_ai_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/pvpoffline" to="." method="_on_button_pvpoff_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/pvponline" to="." method="_on_pvponline_pressed"]
